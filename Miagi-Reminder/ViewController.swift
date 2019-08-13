@@ -9,12 +9,58 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var selectedDateLabel: UILabel!
+    @IBOutlet weak var viewCalendar: UIView!
+    var calendarView: CalendarView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let formatter = DateFormatter()
+        // initially set the format based on your datepicker date / server String
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        let myString = formatter.string(from: Date()) // string purpose I add here
+        // convert your string to date
+        let yourDate = formatter.date(from: myString)
+        //then again set the date format whhich type of output you need
+        formatter.dateFormat = "dd-MMM-yyyy"
+        // again convert your date to string
+        let myStringafd = formatter.string(from: yourDate!)
+        
+        print(myStringafd)
+        
+        self.selectedDateLabel.text = myStringafd
+            }
+    
+    @IBAction func btnBack(_ sender: Any) {
+        calendarView.awakeFromNib()
+        calendarView.rewindOneMonth()
+        
+        
     }
 
 
+    @IBAction func btnNext(_ sender: Any) {
+        calendarView.awakeFromNib()
+       calendarView.advanceOneMonth()
+    }
 }
+
+//extension ViewController: ClickBackNextTime {
+//
+//    func clickBack(){
+//        let swipeLeftGR = UISwipeGestureRecognizer(target: self, action: #selector(advanceOneMonth))
+//        swipeLeftGR.direction = .left
+//        self.addGestureRecognizer(swipeLeftGR)
+//    }
+//
+//    func clickNext(){
+//        let swipeRightGR = UISwipeGestureRecognizer(target: self, action: #selector(rewindOneMonth))
+//        swipeRightGR.direction = .right
+//        self.addGestureRecognizer(swipeRightGR)
+//    }
+//
+//
+//}
 
