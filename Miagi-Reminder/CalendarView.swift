@@ -90,11 +90,11 @@ class CalendarCellView: UIView {
 class CalendarView : UIView {
     var dataSource: CalendarViewDataSource?
     var delegate: CalendarViewDelegate?
-    var time: String?
-//    var parentView: ViewController!{
-//        didSet {
-//            parentView.selectedDateLabel.text = time
-//        }}
+    var time: String?{
+        didSet {
+            parentView.selectedDateLabel.text = time
+        }}
+    var parentView: ViewController!
     var currentDate: Date! {
         didSet {
             for cell in cells {
@@ -140,6 +140,7 @@ class CalendarView : UIView {
     }
     
     override func awakeFromNib() {
+        
         monthLabel = UILabel(frame: CGRect.zero)
         monthLabel.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
         monthLabel.adjustsFontSizeToFitWidth = true
@@ -224,12 +225,12 @@ class CalendarView : UIView {
         
         let date = cellView.date!
         
-//        print(date)
+        print(date)
         let formatter = DateFormatter()
         // initially set the format based on your datepicker date / server String
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = "MM-yyyy"
         let myStringafd = formatter.string(from: selectedDate!)
-//        time = myStringafd
+        time = myStringafd
         print(myStringafd)
         if delegate?.canSelectDate(date) ?? true {
             selectedDate = date
@@ -245,7 +246,8 @@ class CalendarView : UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        monthLabel.text = monthFormatter.string(from: currentDate)
+        monthLabel.text =  monthFormatter.string(from: currentDate)
+//        time =  monthLabel.text
         
         let firstWeekday = currentDate.firstDayOfTheMonth.weekday
         var cellDate = Calendar.current.date(byAdding: .day, value: -firstWeekday + 1, to: currentDate.firstDayOfTheMonth)!
@@ -294,8 +296,6 @@ class CalendarView : UIView {
                     cell.textLabel.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
                     cell.textLabel.textColor = .lightGray
                 }
-                
-                
                 cell.detailLabel.textColor = dotColor
                 cell.detailLabel.text = (dataSource?.showDotForDate(cellDate) ?? false) ? "•" : nil
                 

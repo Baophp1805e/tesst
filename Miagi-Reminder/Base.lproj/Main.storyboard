@@ -54,6 +54,9 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Today"/>
+                                        <connections>
+                                            <action selector="btnToday:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yeo-Fp-eiO"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Miagi Reminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgd-BW-Djr">
                                         <rect key="frame" x="100" y="8" width="194" height="30"/>
@@ -85,6 +88,7 @@
                     </view>
                     <connections>
                         <outlet property="selectedDateLabel" destination="faI-pP-AUa" id="ecO-Vi-lhB"/>
+                        <outlet property="viewCalendar" destination="pf6-33-QoX" id="vhC-jN-RL6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
