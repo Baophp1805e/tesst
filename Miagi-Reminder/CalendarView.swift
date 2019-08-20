@@ -92,9 +92,9 @@ class CalendarView : UIView {
     var delegate: CalendarViewDelegate?
     var time: String?{
         didSet {
-            parentView.selectedDateLabel.text = time
+            parentView?.selectedDateLabel.text = time
         }}
-    var parentView: ViewController!
+    var parentView: ViewController?
     var currentDate: Date! {
         didSet {
             for cell in cells {
@@ -124,12 +124,10 @@ class CalendarView : UIView {
     var monthLabel: UILabel!
     var weekdayLabels: [UILabel]!
     var dotColor: UIColor = .red
-    
-    // See http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
-    
+
     var monthFormatter: DateFormatter {
         let f = DateFormatter()
-        f.dateFormat = "MMM YYYY"
+        f.dateFormat = "MM/YYYY"
         return f
     }
     
@@ -175,39 +173,34 @@ class CalendarView : UIView {
             cells.append(cell)
             self.addSubview(cell)
         }
+        currentToday()
         
+//        let today = Date()
+//        currentDate = today
+//        layoutIfNeeded()
+//        selectedDate = today
+        
+//        //MARK: Click Back
+//            let swipeLeftGR = UISwipeGestureRecognizer(target: self, action: #selector(advanceOneMonth))
+//            swipeLeftGR.direction = .left
+//            self.addGestureRecognizer(swipeLeftGR)
+//
+//       //MARK: Click Next
+//            let swipeRightGR = UISwipeGestureRecognizer(target: self, action: #selector(rewindOneMonth))
+//            swipeRightGR.direction = .right
+//            self.addGestureRecognizer(swipeRightGR)
+        
+    }
+    
+    //MARK: btnToday
+    @objc func currentToday() {
         let today = Date()
         currentDate = today
         layoutIfNeeded()
         selectedDate = today
-        
-        //MARK: Click Back
-            let swipeLeftGR = UISwipeGestureRecognizer(target: self, action: #selector(advanceOneMonth))
-            swipeLeftGR.direction = .left
-            self.addGestureRecognizer(swipeLeftGR)
-        
-       //MARK: Click Next
-            let swipeRightGR = UISwipeGestureRecognizer(target: self, action: #selector(rewindOneMonth))
-            swipeRightGR.direction = .right
-            self.addGestureRecognizer(swipeRightGR)
-        
-
-        
-
-//        let tapGR = UITapGestureRecognizer(target: self, action: #selector(maybeGotoToday(_:)))
-//        tapGR.numberOfTapsRequired = 2
-//        tapGR.numberOfTouchesRequired = 1
-//        self.addGestureRecognizer(tapGR)
+//        delegate?.didSelectDate(sd)
+        setNeedsLayout()
     }
-    
-//    func gotoToday() {
-//        let today = Date()
-//        currentDate = today
-//        print(currentDate)
-//        setNeedsLayout()
-//        layoutIfNeeded()
-//        selectedDate = today
-//    }
     
     //MARK: Click Back
     @objc func advanceOneMonth() {
@@ -225,28 +218,22 @@ class CalendarView : UIView {
         
         let date = cellView.date!
         
-        print(date)
-        let formatter = DateFormatter()
-        // initially set the format based on your datepicker date / server String
-        formatter.dateFormat = "MM-yyyy"
-        let myStringafd = formatter.string(from: selectedDate!)
-        time = myStringafd
-        print(myStringafd)
+//        print(date)
+//        let formatter = DateFormatter()
+//        // initially set the format based on your datepicker date / server String
+//        formatter.dateFormat = "MM-yyyy"
+//        let myStringafd = formatter.string(from: selectedDate!)
+//        time = myStringafd
+//        print(myStringafd)
         if delegate?.canSelectDate(date) ?? true {
             selectedDate = date
         }
     }
     
-//    @objc func maybeGotoToday(_ recognizer: UITapGestureRecognizer) {
-//        if recognizer.location(in: self).y < 40 {
-//            gotoToday()
-//        }
-//    }
-//
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        monthLabel.text =  monthFormatter.string(from: currentDate)
+        time =  monthFormatter.string(from: currentDate)
 //        time =  monthLabel.text
         
         let firstWeekday = currentDate.firstDayOfTheMonth.weekday
@@ -261,7 +248,7 @@ class CalendarView : UIView {
         let weekdayHeight: CGFloat = 10
         let headerHeight: CGFloat = monthNameHeight + weekdayHeight
         
-        monthLabel.frame = CGRect(x: 0, y: 0, width: self.bounds.size.width, height: monthNameHeight)
+//        monthLabel.frame = CGRect(x: 0, y: 0, width: self.bounds.size.width, height: monthNameHeight)
         
         let columnCount: CGFloat = 7
         let rowCount: CGFloat = 6
@@ -296,8 +283,8 @@ class CalendarView : UIView {
                     cell.textLabel.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
                     cell.textLabel.textColor = .lightGray
                 }
-                cell.detailLabel.textColor = dotColor
-                cell.detailLabel.text = (dataSource?.showDotForDate(cellDate) ?? false) ? "•" : nil
+//                cell.detailLabel.textColor = dotColor
+//                cell.detailLabel.text = (dataSource?.showDotForDate(cellDate) ?? false) ? "•" : nil
                 
                 index += 1
                 

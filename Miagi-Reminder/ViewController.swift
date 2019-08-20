@@ -8,30 +8,23 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController{
     @IBOutlet weak var selectedDateLabel: UILabel!
     @IBOutlet weak var viewCalendar: CalendarView!
-//    var calendarView: CalendarView!
+    var calendarCellView: CalendarCellView!
+
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-//        let formatter = DateFormatter()
-//        // initially set the format based on your datepicker date / server String
-//        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//        
-//        let myString = formatter.string(from: Date()) // string purpose I add here
-//        // convert your string to date
-//        let yourDate = formatter.date(from: myString)
-//        //then again set the date format whhich type of output you need
-//        formatter.dateFormat = "MM-yyyy"
-//        // again convert your date to string
-//        let myStringafd = formatter.string(from: yourDate!)
-//        
-//        print(myStringafd)
-//       
-//        self.selectedDateLabel.text = myStringafd
+        self.title = "Miagi Reminder"
+        self.selectedDateLabel.text = viewCalendar.time
         viewCalendar.parentView = self
+        tableView.delegate = self
+        tableView.dataSource = self
+        let nibName = UINib(nibName: "ListEvent", bundle: nil)
+        tableView.register(nibName, forCellReuseIdentifier: "eventCell")
             }
     
     @IBAction func btnBack(_ sender: Any) {
@@ -41,29 +34,33 @@ class ViewController: UIViewController {
     }
 
     @IBAction func btnToday(_ sender: Any) {
-//        viewCalendar.currentDate
+        viewCalendar.currentToday()
     }
     
     @IBAction func btnNext(_ sender: Any) {
         
         viewCalendar.advanceOneMonth()
     }
+    @IBAction func btnAdd(_ sender: Any) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let commentVc = storyBoard.instantiateViewController(withIdentifier: "newEvent") as? NewEventClassViewController
+        self.navigationController?.pushViewController(commentVc!, animated: true)
+    }
+    
 }
 
-//extension ViewController: ClickBackNextTime {
-//
-//    func clickBack(){
-//        let swipeLeftGR = UISwipeGestureRecognizer(target: self, action: #selector(advanceOneMonth))
-//        swipeLeftGR.direction = .left
-//        self.addGestureRecognizer(swipeLeftGR)
-//    }
-//
-//    func clickNext(){
-//        let swipeRightGR = UISwipeGestureRecognizer(target: self, action: #selector(rewindOneMonth))
-//        swipeRightGR.direction = .right
-//        self.addGestureRecognizer(swipeRightGR)
-//    }
-//
-//
-//}
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! ListEvent
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+}
 

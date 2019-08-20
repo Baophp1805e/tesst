@@ -15,7 +15,11 @@
 		181C91F623011BF2002B6B4A /* Miagi_ReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181C91F523011BF2002B6B4A /* Miagi_ReminderTests.swift */; };
 		181C920123011BF2002B6B4A /* Miagi_ReminderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181C920023011BF2002B6B4A /* Miagi_ReminderUITests.swift */; };
 		181C9211230176FD002B6B4A /* NewEventClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181C9210230176FD002B6B4A /* NewEventClassViewController.swift */; };
+		1898D6E12303C06D00A643D0 /* ListEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898D6DF2303C06D00A643D0 /* ListEvent.swift */; };
+		1898D6E22303C06D00A643D0 /* ListEvent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1898D6E02303C06D00A643D0 /* ListEvent.xib */; };
 		189F1A7D2302530A00568FDE /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F1A7C2302530A00568FDE /* CalendarView.swift */; };
+		18AC73C92306B4D300AFB939 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC73C82306B4D300AFB939 /* Event.swift */; };
+		18C863C1230A33E500FBA551 /* MapsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C863C0230A33E500FBA551 /* MapsVC.swift */; };
 		6D19D04F388DAD604305C4A8 /* libPods-Miagi-Reminder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8AB5B2ACFAD44AA578D024 /* libPods-Miagi-Reminder.a */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +55,11 @@
 		181C920023011BF2002B6B4A /* Miagi_ReminderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Miagi_ReminderUITests.swift; sourceTree = "<group>"; };
 		181C920223011BF2002B6B4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		181C9210230176FD002B6B4A /* NewEventClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventClassViewController.swift; sourceTree = "<group>"; };
+		1898D6DF2303C06D00A643D0 /* ListEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEvent.swift; sourceTree = "<group>"; };
+		1898D6E02303C06D00A643D0 /* ListEvent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListEvent.xib; sourceTree = "<group>"; };
 		189F1A7C2302530A00568FDE /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		18AC73C82306B4D300AFB939 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		18C863C0230A33E500FBA551 /* MapsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsVC.swift; sourceTree = "<group>"; };
 		1D18DBF837D543416B81ED37 /* Pods-Miagi-Reminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Miagi-Reminder.release.xcconfig"; path = "Target Support Files/Pods-Miagi-Reminder/Pods-Miagi-Reminder.release.xcconfig"; sourceTree = "<group>"; };
 		3ACA0C4A7BEE6BA9B0759A52 /* Pods-Miagi-Reminder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Miagi-Reminder.debug.xcconfig"; path = "Target Support Files/Pods-Miagi-Reminder/Pods-Miagi-Reminder.debug.xcconfig"; sourceTree = "<group>"; };
 		DC8AB5B2ACFAD44AA578D024 /* libPods-Miagi-Reminder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Miagi-Reminder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +117,9 @@
 			isa = PBXGroup;
 			children = (
 				181C91E023011BEF002B6B4A /* AppDelegate.swift */,
+				1898D6DE2303C03100A643D0 /* Event */,
+				1896B07A23055FEE00E2FE23 /* Maps */,
+				18AC73C72306B4BB00AFB939 /* Models */,
 				181C91E223011BEF002B6B4A /* ViewController.swift */,
 				189F1A7C2302530A00568FDE /* CalendarView.swift */,
 				181C91E423011BEF002B6B4A /* Main.storyboard */,
@@ -136,6 +147,31 @@
 				181C920223011BF2002B6B4A /* Info.plist */,
 			);
 			path = "Miagi-ReminderUITests";
+			sourceTree = "<group>";
+		};
+		1896B07A23055FEE00E2FE23 /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				18C863C0230A33E500FBA551 /* MapsVC.swift */,
+			);
+			path = Maps;
+			sourceTree = "<group>";
+		};
+		1898D6DE2303C03100A643D0 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				1898D6DF2303C06D00A643D0 /* ListEvent.swift */,
+				1898D6E02303C06D00A643D0 /* ListEvent.xib */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		18AC73C72306B4BB00AFB939 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				18AC73C82306B4D300AFB939 /* Event.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		791E4A49DB109E7471D6C99D /* Frameworks */ = {
@@ -166,6 +202,7 @@
 				181C91D923011BEF002B6B4A /* Sources */,
 				181C91DA23011BEF002B6B4A /* Frameworks */,
 				181C91DB23011BEF002B6B4A /* Resources */,
+				226B3EDFF0A6344F1DDDF9E7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -260,6 +297,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1898D6E22303C06D00A643D0 /* ListEvent.xib in Resources */,
 				181C91EB23011BF2002B6B4A /* LaunchScreen.storyboard in Resources */,
 				181C91E823011BF2002B6B4A /* Assets.xcassets in Resources */,
 				181C91E623011BEF002B6B4A /* Main.storyboard in Resources */,
@@ -305,6 +343,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		226B3EDFF0A6344F1DDDF9E7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Miagi-Reminder/Pods-Miagi-Reminder-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Miagi-Reminder/Pods-Miagi-Reminder-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Miagi-Reminder/Pods-Miagi-Reminder-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -315,6 +370,9 @@
 				181C91E323011BEF002B6B4A /* ViewController.swift in Sources */,
 				181C91E123011BEF002B6B4A /* AppDelegate.swift in Sources */,
 				189F1A7D2302530A00568FDE /* CalendarView.swift in Sources */,
+				18C863C1230A33E500FBA551 /* MapsVC.swift in Sources */,
+				18AC73C92306B4D300AFB939 /* Event.swift in Sources */,
+				1898D6E12303C06D00A643D0 /* ListEvent.swift in Sources */,
 				181C9211230176FD002B6B4A /* NewEventClassViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,7 +556,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Reminder-Calender.Miagi-Reminder";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.balitax.Auto-Complete";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -517,7 +575,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Reminder-Calender.Miagi-Reminder";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.balitax.Auto-Complete";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
